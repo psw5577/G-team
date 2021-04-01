@@ -1,11 +1,15 @@
 # 최 근접 쌍 찾기
 
-- ## 2차원 배열을 이용하기
+최 근접 점을 찾는 코드에서 점들 사이의 거리를 구하고 그 점이 몇번 점인지 출력하기가 어려웠다. 그래서 점들 사이의 가장 가까운 거리만 출력되도록 했다. 분할 정복 코드는 우리가 직접 짜보려 했으나 실패했고, 코드를 따와서 결과만 비교하였다.
+
+
+
+- ## 모든 점 비교하기
 
 ```
 import java.util.*;
 
-public class force{
+public class comal{
     static int[][] point;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -28,7 +32,7 @@ public class force{
                 }
             }
         }
-        System.out.println(min+" "+minX+" "+minY);
+        System.out.println(min);
     }
     public static double calDist(int a, int b){
         return Math.sqrt(Math.pow(point[a][0]-point[b][0],2)+Math.pow(point[a][1]-point[b][1],2));
@@ -37,15 +41,19 @@ public class force{
 }
 ```
 
-![텍스트](C:\Users\82104\Desktop.jpg "냥이")
+**컴퓨터 1**
+
+**점 5개** ***926ms***
+
+**컴퓨터2**
+
+**점 5개** ***791ms***
 
 
 
 
 
-
-
-- ## 구조체 이용하기
+- ## 분할 정복 이용하기
 
 ```
 import java.util.ArrayList;
@@ -141,3 +149,20 @@ public class comal {
 }
 ```
 
+*위 코드는 절반 이상 따온 코드입니다.*
+
+**컴퓨터1**
+
+**점 5개** ***348ms***
+
+**컴퓨터2**
+
+**점 5개** ***751ms***
+
+* # 결과
+
+  두 컴퓨터의 성능에 따라 걸린 시간이 다르게 나왔다.
+
+   공통적으로 모든 점을 비교하는 것 보다 분할 정복이 속도가 더 빠를 것으로 생각했지만 점의 갯수가 너무 적어 속도를 비교하기가 애매했다. 하지만 너무 많은 점을 넣기에는 스캐너를 이용해 직접 입력받는 방식이어서 현실적이지 못했다.
+
+  만약 코드를 더 발전시킨다면 점의 좌표를 자동으로 입력되는 코드를 추가해야 할 것이다. 
